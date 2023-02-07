@@ -1,5 +1,5 @@
 package model;
 
-public class MyModel {
+class WantToReadTest {
     // delete or rename this class!
 }
