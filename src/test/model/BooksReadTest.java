@@ -14,24 +14,24 @@ class BooksReadTest {
     private BooksRead testBooksReadList;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         testBooksReadList = new BooksRead();
     }
 
     @Test
-    void testConstructor1(){
+    void testConstructor1() {
         // stub
     }
 
     @Test
-    void testAddBook(){
+    void testAddBook() {
         testBookAlreadyRead = new Book("Pride and Prejudice", "classic", 10);
         testBooksReadList.addBookAlreadyRead(testBookAlreadyRead);
         assertEquals(1, testBooksReadList.booksReadLength());
     }
 
     @Test
-    void testAddMultipleBooks(){
+    void testAddMultipleBooks() {
         testBook2 = new Book("Harry Potter", "good storyline", 6);
         testBooksReadList.addBookAlreadyRead(testBookAlreadyRead);
         testBooksReadList.addBookAlreadyRead(testBook2);
