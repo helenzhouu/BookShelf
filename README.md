@@ -11,6 +11,8 @@ personal hobbies and interests.
 
 User story:
 - As a user, I want to be able to add a book to a list of books I have read 
+- As a user, I want to add multiple books to a list of books I have read
+- As a user, I want to be able to remove a book from the list of books
 - As a user, I want to be able to rate the book that I read (on a scale from 1 to 10)
 - As a user, I want to be able to write a review on the book that I read
 - As a user, I want to be able to add a book to a list of books I want to read

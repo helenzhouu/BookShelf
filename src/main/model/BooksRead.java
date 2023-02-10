@@ -16,6 +16,7 @@ public class BooksRead {
         booksRead.add(book);
     }
 
+    // REQUIRES: non-empty list of books
     // MODIFIES: this
     // EFFECTS: removes book from list of books already read
     public void removeBookAlreadyRead(Book book) {
@@ -25,8 +26,11 @@ public class BooksRead {
     // EFFECTS: if book title matches a book in the list,
     //             - return book
     //          otherwise, return false
-    public void getBook() {
-        // stub
+    public Book getBook(String title) {
+        if (booksRead.contains(title)) {
+            return getBook(title);
+        }
+        return null;
     }
 
     // EFFECTS: returns the amount of books in the list
