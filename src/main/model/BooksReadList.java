@@ -2,12 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
-public class BooksRead {
+public class BooksReadList {
     private ArrayList<Book> booksRead;
 
     // EFFECT: constructs an empty books list
-    public BooksRead() {
-        booksRead = new ArrayList<Book>();
+    public BooksReadList() {
+        booksRead = new ArrayList<>();
     }
 
     // MODIFIES: this
@@ -25,10 +25,12 @@ public class BooksRead {
 
     // EFFECTS: if book title matches a book in the list,
     //             - return book
-    //          otherwise, return false
+    //          otherwise, return error (exception handling?)
     public Book getBook(String title) {
-        if (booksRead.contains(title)) {
-            return getBook(title);
+        for (Book bk : booksRead) {
+            if (title.equals(bk.getBookTitle())) {
+                return bk;
+            }
         }
         return null;
     }
@@ -36,6 +38,11 @@ public class BooksRead {
     // EFFECTS: returns the amount of books in the list
     public int booksReadLength() {
         return booksRead.size();
+    }
+
+    // EFFECTS: returns all the books in the list
+    public ArrayList<Book> getAllReadBooks() {
+        return booksRead;
     }
 
 }
