@@ -31,7 +31,6 @@ public class Book {
     // CODE SOURCE: Teller App
     @Override
     public String toString() {
-        return "Book Title = " + bookTitle + ", Review = " + review + ", "
-                + "Rating = " + rating + "";
+        return "Book Title = " + bookTitle + ", Review = " + review + ", " + "Rating = " + rating + "";
     }
 }
