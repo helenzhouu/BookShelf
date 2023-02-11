@@ -19,4 +19,11 @@ public class NextBook {
     public String getDescription() {
         return description;
     }
+
+    // EFFECTS: returns a string representation of book
+    // CODE SOURCE: Teller App
+    @Override
+    public String toString() {
+        return "Book Title = " + nextBookTitle + ", Overview = " + description + "";
+    }
 }

@@ -15,18 +15,19 @@ public class BookApp {
     private BooksReadList finishedBooks;
     private WantToReadList nextBooks;
 
+
     public BookApp() {
         runBookApp();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    // CODE SOURCE: TellarApp
+    // CODE SOURCE: Teller App
     private void runBookApp() {
         boolean keepGoing = true;
         String command = null;
 
-        Scanner input = new Scanner(System.in);
+        init();
 
         while (keepGoing) {
             displayMenu();
@@ -65,6 +66,16 @@ public class BookApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes books
+    // CODE SOURCE: Teller App
+    private void init() {
+        finishedBooks = new BooksReadList();
+        nextBooks = new WantToReadList();
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
+    }
+
     // EFFECTS: display initial menu with options
     public void displayMenu() {
         System.out.println("Welcome to your bookshelf! What would you like to do? ");
@@ -74,6 +85,7 @@ public class BookApp {
         System.out.println("4 -> View one specific book from my want to read bookshelf");
         System.out.println("5 -> View my entire read bookshelf");
         System.out.println("6 -> View my entire want to read bookshelf");
+        System.out.println("q -> Quit");
     }
 
     // MODIFIES: this
@@ -89,8 +101,6 @@ public class BookApp {
 
         bookRead = new Book(readBookTitle, bookReview, bookRating);
         finishedBooks.addBookAlreadyRead(bookRead);
-
-        // thank you and give user option to return to menu
     }
 
     // MODIFIES: this
@@ -102,7 +112,9 @@ public class BookApp {
         System.out.println("Give a brief overview of the book: ");
         String bookDescription = input.nextLine();
 
-        // method call
+        bookToRead = new NextBook(readNextBookTitle, bookDescription);
+        nextBooks.addBookToRead(bookToRead);
+
     }
 
     // EFFECTS: returns only the book that the user wants to see from read list
@@ -110,7 +122,7 @@ public class BookApp {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the title of the book you want to view: ");
         String title = input.nextLine();
-        finishedBooks.getBook(title);
+        System.out.println(finishedBooks.getBook(title));
     }
 
     // EFFECTS: returns only the book that the user wants to see from want to read list
@@ -118,16 +130,16 @@ public class BookApp {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the title of the book you want to view: ");
         String booktitle = input.nextLine();
-        nextBooks.getNextBook(booktitle);
+        System.out.println(nextBooks.getNextBook(booktitle));
     }
 
     // EFFECTS: returns the list of all books in the read list
     public void viewAllReadBooks() {
-        finishedBooks.getAllReadBooks();
+        System.out.println(finishedBooks.getAllReadBooks());
     }
 
     // EFFECTS: returns the list of all books in the want to read list
     public void viewAllWantToReadBooks() {
-        nextBooks.getAllNextBooks();
+        System.out.println(nextBooks.getAllNextBooks());
     }
 }

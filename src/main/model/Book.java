@@ -27,4 +27,11 @@ public class Book {
         return rating;
     }
 
+    // EFFECTS: returns a string representation of book
+    // CODE SOURCE: Teller App
+    @Override
+    public String toString() {
+        return "Book Title = " + bookTitle + ", Review = " + review + ", "
+                + "Rating = " + rating + "";
+    }
 }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // unit tests for WantToRead class
 class WantToReadListTest {
@@ -38,13 +39,6 @@ class WantToReadListTest {
     }
 
     @Test
-    void testGetNextBook() {
-        testNextBook = new NextBook("The Giver", "dystopian setting");
-        testNextBooks.addBookToRead(testNextBook);
-        assertEquals(testNextBook, testNextBooks.getNextBook("The Giver"));
-    }
-
-    @Test
     void testRemoveBookFromNextBooks() {
         testNextBook2 = new NextBook("Snow White", "good book for kids");
         testNextBooks.addBookToRead(testNextBook);
@@ -52,6 +46,21 @@ class WantToReadListTest {
         assertEquals(2, testNextBooks.booksReadLength());
         testNextBooks.removeBookNotRead(testNextBook2);
         assertEquals(1, testNextBooks.booksReadLength());
+    }
+
+    @Test
+    void testGetNextBook() {
+        testNextBook = new NextBook("The Giver", "dystopian setting");
+        testNextBooks.addBookToRead(testNextBook);
+        assertEquals(testNextBook, testNextBooks.getNextBook("The Giver"));
+    }
+
+
+    @Test
+    void testGetNextBookThatDoesntExist() {
+        testNextBook2 = new NextBook("Pride and Prejudice", "classic");
+        testNextBooks.addBookToRead(testNextBook2);
+        assertTrue(testNextBooks.getNextBook("Harry Potter") == null);
     }
 
 }
