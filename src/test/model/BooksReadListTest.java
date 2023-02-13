@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 // unit tests for BooksRead class
 // Use abstract classes? supertype?
@@ -62,15 +61,17 @@ class BooksReadListTest {
     void testGetBookThatDoesntExist() {
         testBookAlreadyRead = new Book("Pride and Prejudice", "classic", 10);
         testBooksReadList.addBookAlreadyRead(testBookAlreadyRead);
-        assertTrue(testBooksReadList.getBook("Harry Potter") == null);
+        assertNull(testBooksReadList.getBook("Harry Potter"));
     }
 
-//    @Test
-//    void testViewAllReadBooks() {
-//        testBookAlreadyRead = new Book("Pride and Prejudice", "classic", 10);
-//        testBook2 = new Book("Harry Potter", "good storyline", 6);
-//        testBooksReadList.addBookAlreadyRead(testBookAlreadyRead);
-//        testBooksReadList.addBookAlreadyRead(testBook2);
-//        assertEquals(testBooksReadList, testBooksReadList.getAllReadBooks());
-//    }
+    @Test
+    void testViewAllReadBooks() {
+        testBookAlreadyRead = new Book("Pride and Prejudice", "classic", 10);
+        testBook2 = new Book("Harry Potter", "good storyline", 6);
+        testBooksReadList.addBookAlreadyRead(testBookAlreadyRead);
+        testBooksReadList.addBookAlreadyRead(testBook2);
+        assertEquals(2, testBooksReadList.booksReadLength());
+        assertTrue(testBooksReadList.getAllReadBooks().contains(testBookAlreadyRead));
+        assertTrue(testBooksReadList.getAllReadBooks().contains(testBook2));
+    }
 }
