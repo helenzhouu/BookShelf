@@ -1,11 +1,13 @@
 package model;
 
+// represents a book that user has read with a title, review, and rating from 1-10
 public class Book {
-    private String bookTitle;
-    private String review;
-    private int rating;
+    private String bookTitle;  // book title
+    private String review;     // review of the book
+    private int rating;        // rating for the book in integers from 1-10
 
-    // EFFECTS: Book has a title, brief review, and rating of the book
+    // REQUIRES: rating must be an integer between 1-10
+    // EFFECTS: Constructs a book with a title, brief review, and rating
     public Book(String bookTitle, String review, int rating) {
         this.bookTitle = bookTitle;
         this.review = review;

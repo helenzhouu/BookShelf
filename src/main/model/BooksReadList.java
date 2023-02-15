@@ -2,8 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+// represents a list of books that user has already read
 public class BooksReadList {
-    private ArrayList<Book> booksRead;
+    private ArrayList<Book> booksRead;  // list of read books
 
     // EFFECT: constructs an empty books list
     public BooksReadList() {
@@ -16,7 +17,7 @@ public class BooksReadList {
         booksRead.add(book);
     }
 
-    // REQUIRES: non-empty list of books
+    // REQUIRES: non-empty list of books and book must exist in the list
     // MODIFIES: this
     // EFFECTS: removes book from list of books already read
     public void removeBookAlreadyRead(Book book) {

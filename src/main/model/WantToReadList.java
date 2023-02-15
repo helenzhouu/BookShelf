@@ -2,9 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
+// represents a list of books that the user wants to read
 public class WantToReadList {
-    private ArrayList<NextBook> wantToRead;
-    private Book bookNotRead;
+    private ArrayList<NextBook> wantToRead;  // list of books that user wants to read
+    private Book bookNotRead;   // book that user wants to read
 
     // EFFECT: constructs an empty books list
     public WantToReadList() {
@@ -17,6 +18,9 @@ public class WantToReadList {
         wantToRead.add(futurebook);
     }
 
+    // REQUIRES: non-empty list and book must exist in the list
+    // MODIFIES: this
+    // EFFECTS: removes a book from list of books that user wants to read
     public void removeBookNotRead(NextBook bookNotRead) {
         wantToRead.remove(bookNotRead);
     }

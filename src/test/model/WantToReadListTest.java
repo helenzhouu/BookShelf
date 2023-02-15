@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// unit tests for WantToRead class
+// unit tests for WantToReadList class
 class WantToReadListTest {
     private NextBook testNextBook;
     private NextBook testNextBook2;

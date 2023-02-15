@@ -1,8 +1,9 @@
 package model;
 
+// represents a book that user wants to read with a title and brief description
 public class NextBook {
-    private String nextBookTitle;
-    private String description;
+    private String nextBookTitle;   // title of the book user wants to read
+    private String description;     // description of the book
 
     // EFFECTS: constructs a book with title and brief overview
     public NextBook(String nextBookTitle, String description) {

@@ -8,9 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// unit tests for BooksRead class
-// Use abstract classes? supertype?
-
+// unit tests for BooksReadList class
 class BooksReadListTest {
     private Book testBookAlreadyRead;
     private Book testBook2;

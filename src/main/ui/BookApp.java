@@ -8,6 +8,7 @@ import model.WantToReadList;
 
 import java.util.Scanner;
 
+// BookShelf application
 public class BookApp {
     private Scanner input;
     private Book bookRead;
@@ -15,7 +16,7 @@ public class BookApp {
     private BooksReadList finishedBooks;
     private WantToReadList nextBooks;
 
-
+    // EFFECTS: runs the bookshelf app
     public BookApp() {
         runBookApp();
     }
@@ -54,9 +55,9 @@ public class BookApp {
         } else if (command.equals("2")) {
             doAddBookToNextBooks();
         } else if (command.equals("3")) {
-            removeBookfromReadBooks();
+            removeBookFromReadBooks();
         } else if (command.equals("4")) {
-            removeBookfromNextBooks();
+            removeBookFromNextBooks();
         } else if (command.equals("5")) {
             viewOneReadBook();
         } else if (command.equals("6")) {
@@ -128,25 +129,25 @@ public class BookApp {
     // REQUIRES: non-empty list
     // MODIFIES: this
     // EFFECTS: removes book from list of books that user has read
-    public void removeBookfromReadBooks() {
+    public void removeBookFromReadBooks() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the title of the book you want to remove: ");
         String deleteBook = input.nextLine();
 
         finishedBooks.removeBookAlreadyRead(finishedBooks.getBook(deleteBook));
-        System.out.println("You have removed " + bookRead.getBookTitle() + " from your read bookshelf");
+        System.out.println("You have removed " + deleteBook + " from your read bookshelf");
     }
 
-    // REQUIRES: non-empty list
+    // REQUIRES: non-empty list and book must already exist in the list
     // MODIFIES: this
     // EFFECTS: removes book from list of next books that user wants to read
-    public void removeBookfromNextBooks() {
+    public void removeBookFromNextBooks() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the title of the book you want to remove: ");
         String deleteNextBook = input.nextLine();
 
         nextBooks.removeBookNotRead(nextBooks.getNextBook(deleteNextBook));
-        System.out.println("You have removed " + bookToRead.getNextBookTitle() + " from your want to read bookshelf");
+        System.out.println("You have removed " + deleteNextBook + " from your bookshelf");
     }
 
     // EFFECTS: returns only the book that the user wants to see from read list
