@@ -18,12 +18,21 @@ public class WantToReadList {
         wantToRead.add(futurebook);
     }
 
-    // REQUIRES: non-empty list and book must exist in the list
+    // REQUIRES: non-empty list
     // MODIFIES: this
-    // EFFECTS: removes a book from list of books that user wants to read
-    public void removeBookNotRead(NextBook bookNotRead) {
-        wantToRead.remove(bookNotRead);
+    // EFFECTS: if given book name exists in list,
+    //            - remove book from list of books that user wants to read and return true
+    //          otherwise, return false
+    public Boolean removeBookNotRead(String title) {
+        for (NextBook bk : wantToRead) {
+            if (title.equals(bk.getNextBookTitle())) {
+                wantToRead.remove(bk);
+                return true;
+            }
+        }
+        return false;
     }
+
 
     // EFFECTS: if book title matches a book in list,
     //               - return that book with description

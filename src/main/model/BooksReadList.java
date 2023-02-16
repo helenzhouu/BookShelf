@@ -17,16 +17,24 @@ public class BooksReadList {
         booksRead.add(book);
     }
 
-    // REQUIRES: non-empty list of books and book must exist in the list
+    // REQUIRES: non-empty list of books
     // MODIFIES: this
-    // EFFECTS: removes book from list of books already read
-    public void removeBookAlreadyRead(Book book) {
-        booksRead.remove(book);
+    // EFFECTS: if given book name exists in list,
+    //             - removes book from list of books already read and returns true
+    //         otherwise, return false
+    public Boolean removeBookAlreadyRead(String title) {
+        for (Book bk : booksRead) {
+            if (title.equals(bk.getBookTitle())) {
+                booksRead.remove(bk);
+                return true;
+            }
+        }
+        return false;
     }
 
     // EFFECTS: if book title matches a book in the list,
     //             - return book
-    //          otherwise, return error (exception handling?)
+    //          otherwise, return error
     public Book getBook(String title) {
         for (Book bk : booksRead) {
             if (title.equals(bk.getBookTitle())) {

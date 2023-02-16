@@ -40,12 +40,20 @@ class WantToReadListTest {
 
     @Test
     void testRemoveBookFromNextBooks() {
+        testNextBook = new NextBook("The Giver", "dystopian setting");
         testNextBook2 = new NextBook("Snow White", "good book for kids");
         testNextBooks.addBookToRead(testNextBook);
         testNextBooks.addBookToRead(testNextBook2);
         assertEquals(2, testNextBooks.booksReadLength());
-        testNextBooks.removeBookNotRead(testNextBook2);
+        assertTrue(testNextBooks.removeBookNotRead(testNextBook2.getNextBookTitle()));
         assertEquals(1, testNextBooks.booksReadLength());
+    }
+
+    @Test
+    void testRemoveNonExistentBook() {
+        testNextBook = new NextBook("The Giver", "dystopian setting");
+        testNextBooks.addBookToRead(testNextBook);
+        assertFalse(testNextBooks.removeBookNotRead("Lord Of The Rings"));
     }
 
     @Test

@@ -5,6 +5,7 @@ import model.Book;
 import model.BooksReadList;
 import model.NextBook;
 import model.WantToReadList;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.Scanner;
 
@@ -134,11 +135,15 @@ public class BookApp {
         System.out.println("Enter the title of the book you want to remove: ");
         String deleteBook = input.nextLine();
 
-        finishedBooks.removeBookAlreadyRead(finishedBooks.getBook(deleteBook));
-        System.out.println("You have removed " + deleteBook + " from your read bookshelf");
+        if (finishedBooks.removeBookAlreadyRead(deleteBook)) {
+            finishedBooks.removeBookAlreadyRead(deleteBook);
+            System.out.println("You have removed " + deleteBook + " from your read bookshelf");
+        } else {
+            System.out.println("Cannot find book, please try again");
+        }
     }
 
-    // REQUIRES: non-empty list and book must already exist in the list
+    // REQUIRES: non-empty list
     // MODIFIES: this
     // EFFECTS: removes book from list of next books that user wants to read
     public void removeBookFromNextBooks() {
@@ -146,8 +151,12 @@ public class BookApp {
         System.out.println("Enter the title of the book you want to remove: ");
         String deleteNextBook = input.nextLine();
 
-        nextBooks.removeBookNotRead(nextBooks.getNextBook(deleteNextBook));
-        System.out.println("You have removed " + deleteNextBook + " from your bookshelf");
+        if (nextBooks.removeBookNotRead(deleteNextBook)) {
+            nextBooks.removeBookNotRead(deleteNextBook);
+            System.out.println("You have removed " + deleteNextBook + " from your bookshelf");
+        } else {
+            System.out.println("Cannot find book, please try again");
+        }
     }
 
     // EFFECTS: returns only the book that the user wants to see from read list

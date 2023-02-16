@@ -41,11 +41,20 @@ class BooksReadListTest {
 
     @Test
     void testRemoveBook() {
+        testBookAlreadyRead = new Book("Pride and Prejudice", "classic", 10);
+        testBook2 = new Book("Harry Potter", "good storyline", 6);
         testBooksReadList.addBookAlreadyRead(testBookAlreadyRead);
         testBooksReadList.addBookAlreadyRead(testBook2);
         assertEquals(2, testBooksReadList.booksReadLength());
-        testBooksReadList.removeBookAlreadyRead(testBookAlreadyRead);
+        assertTrue(testBooksReadList.removeBookAlreadyRead(testBookAlreadyRead.getBookTitle()));
         assertEquals(1, testBooksReadList.booksReadLength());
+    }
+
+    @Test
+    void testRemoveBookThatDoesntExist() {
+        testBook2 = new Book("Harry Potter", "good storyline", 6);
+        testBooksReadList.addBookAlreadyRead(testBook2);
+        assertFalse(testBooksReadList.removeBookAlreadyRead("Hunger Games"));
     }
 
     @Test
