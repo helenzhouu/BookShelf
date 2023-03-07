@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // represents a list of books that user has already read
-public class BooksReadList {
+public class BooksReadList implements Writable {
     private ArrayList<Book> booksRead;  // list of read books
 
     // EFFECT: constructs an empty books list
@@ -52,6 +56,27 @@ public class BooksReadList {
     // EFFECTS: returns all the books in the list
     public ArrayList<Book> getAllReadBooks() {
         return booksRead;
+    }
+
+    // EFFECTS:
+    // CODE SOURCE: Json Serialization Demo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("booksread", booksToJson());
+        return json;
+    }
+
+    // EFFECTS: returns books in this BooksReadList as a JSON array
+    // CODE SOURCE: Json Serialization Demo
+    private JSONArray booksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Book bk : booksRead) {
+            jsonArray.put(bk.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

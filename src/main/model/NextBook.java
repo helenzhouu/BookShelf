@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // represents a book that user wants to read with a title and brief description
-public class NextBook {
+public class NextBook implements Writable {
     private String nextBookTitle;   // title of the book user wants to read
     private String description;     // description of the book
 
@@ -26,5 +29,15 @@ public class NextBook {
     @Override
     public String toString() {
         return "Book Title = " + nextBookTitle + ", Overview = " + description + "";
+    }
+
+    // EFFECTS: maps name to object
+    // CODE SOURCE: JSON SERILIZATION DEMO
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("book", nextBookTitle);
+        json.put("description", description);
+        return json;
     }
 }

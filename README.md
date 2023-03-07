@@ -18,3 +18,5 @@ User story:
 - As a user, I want to be able to add a book to a list of books I want to read
 - As a user, I want to be able to write a brief description for the book I want to read
 - As a user, I want to be able to select any book from my read or want to read list and view it in more detail
+- As a user, I want to be able to save my list of books to file
+- As a user, I want to be able to load my list of books from file

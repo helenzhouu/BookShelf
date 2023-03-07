@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // represents a list of books that the user wants to read
-public class WantToReadList {
+public class WantToReadList implements Writable {
     private ArrayList<NextBook> wantToRead;  // list of books that user wants to read
     private Book bookNotRead;   // book that user wants to read
 
@@ -54,5 +58,26 @@ public class WantToReadList {
     // EFFECTS: returns all the books in the list
     public ArrayList<NextBook> getAllNextBooks() {
         return wantToRead;
+    }
+
+    // EFFECTS:
+    // CODE SOURCE: Json Serialization Demo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("nextbooks", nextBooksToJson());
+        return json;
+    }
+
+    // EFFECTS: returns books in this BooksReadList as a JSON array
+    // CODE SOURCE: Json Serialization Demo
+    private JSONArray nextBooksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (NextBook bk : wantToRead) {
+            jsonArray.put(bk.toJson());
+        }
+
+        return jsonArray;
     }
 }

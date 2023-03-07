@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // represents a book that user has read with a title, review, and rating from 1-10
-public class Book {
+public class Book implements Writable {
     private String bookTitle;  // book title
     private String review;     // review of the book
     private int rating;        // rating for the book in integers from 1-10
@@ -34,5 +37,16 @@ public class Book {
     @Override
     public String toString() {
         return "Book Title = " + bookTitle + ", Review = " + review + ", " + "Rating = " + rating + "";
+    }
+
+    // EFFECTS: maps name to object
+    // CODE SOURCE: JSON SERILIZATION DEMO
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("book", bookTitle);
+        json.put("review", review);
+        json.put("rating", rating);
+        return json;
     }
 }
