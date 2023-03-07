@@ -5,7 +5,13 @@ import model.Book;
 import model.BooksReadList;
 import model.NextBook;
 import model.WantToReadList;
+import persistence.JsonReaderForBooksReadList;
+import persistence.JsonReaderForWantToReadList;
+import persistence.JsonWriterForBooksReadList;
+import persistence.JsonWriterForWantToReadList;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // BookShelf application
@@ -15,9 +21,19 @@ public class BookApp {
     private NextBook bookToRead;
     private BooksReadList finishedBooks;
     private WantToReadList nextBooks;
+    private static final String JSON_STORE = "./data/workroom.json";
+    private JsonWriterForBooksReadList jsonWriterForBooksRead;
+    private JsonReaderForBooksReadList jsonReaderForBooksRead;
+    private JsonWriterForWantToReadList jsonWriterForWantToRead;
+    private JsonReaderForWantToReadList jsonReaderForWantToRead;
 
     // EFFECTS: runs the bookshelf app
-    public BookApp() {
+    // CODE SOURCE: Json Serialization Demo
+    public BookApp() throws FileNotFoundException {
+        jsonWriterForBooksRead = new JsonWriterForBooksReadList(JSON_STORE);
+        jsonReaderForBooksRead = new JsonReaderForBooksReadList(JSON_STORE);
+        jsonWriterForWantToRead = new JsonWriterForWantToReadList(JSON_STORE);
+        jsonReaderForWantToRead = new JsonReaderForWantToReadList(JSON_STORE);
         runBookApp();
     }
 
@@ -182,5 +198,53 @@ public class BookApp {
     // EFFECTS: returns the list of all books in the want to read list
     public void viewAllWantToReadBooks() {
         System.out.println(nextBooks.getAllNextBooks());
+    }
+
+    // EFFECTS: saves the BooksReadList to file
+    // CODE SOURCE: Json Serialization Demo
+    private void saveBooksReadList() {
+        try {
+            jsonWriterForBooksRead.open();
+            jsonWriterForBooksRead.write(finishedBooks);
+            jsonWriterForBooksRead.close();
+            System.out.println("Saved your books read list to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads BooksReadList from file
+    private void loadBooksReadList() {
+        try {
+            finishedBooks = jsonReaderForBooksRead.read();
+            System.out.println("Loaded your books read list from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: saves the WantToReadList to file
+    // CODE SOURCE: Json Serialization Demo
+    private void saveWantToReadList() {
+        try {
+            jsonWriterForWantToRead.open();
+            jsonWriterForWantToRead.write(nextBooks);
+            jsonWriterForWantToRead.close();
+            System.out.println("Saved your want to read books list to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads WantToReadList from file
+    private void loadWantToReadList() {
+        try {
+            nextBooks = jsonReaderForWantToRead.read();
+            System.out.println("Loaded your want to read books read list from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

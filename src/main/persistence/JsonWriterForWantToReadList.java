@@ -1,6 +1,7 @@
 package persistence;
 
 import model.BooksReadList;
+import model.WantToReadList;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -27,8 +28,8 @@ public class JsonWriterForWantToReadList {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of workroom to file
-    public void write(BooksReadList brl) {
-        JSONObject json = brl.toJson();
+    public void write(WantToReadList wrt) {
+        JSONObject json = wrt.toJson();
         saveToFile(json.toString(TAB));
     }
 
