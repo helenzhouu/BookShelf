@@ -48,12 +48,12 @@ public class JsonReaderForBooksRead {
     }
 
     // MODIFIES: brl
-    // EFFECTS: parses books from JSON object and adds them to workroom
+    // EFFECTS: parses books from JSON object and adds them to book list
     private void addBooks(BooksReadList brl, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("books");
+        JSONArray jsonArray = jsonObject.getJSONArray("booksread");
         for (Object json : jsonArray) {
-            JSONObject nextBook = (JSONObject) json;
-            addBook(brl, nextBook);
+            JSONObject nextThingy = (JSONObject) json;
+            addBook(brl, nextThingy);
         }
     }
 
@@ -62,7 +62,7 @@ public class JsonReaderForBooksRead {
     private void addBook(BooksReadList brl, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         String review = jsonObject.getString("review");
-        Integer rating = jsonObject.getInt("rating");
+        int rating = jsonObject.getInt("rating");
         Book book = new Book(title, review, rating);
         brl.addBookAlreadyRead(book);
     }

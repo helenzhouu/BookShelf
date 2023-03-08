@@ -36,7 +36,7 @@ public class NextBook implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("book", nextBookTitle);
+        json.put("title", nextBookTitle);
         json.put("description", description);
         return json;
     }

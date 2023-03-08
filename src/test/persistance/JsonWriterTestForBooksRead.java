@@ -8,6 +8,7 @@ import persistence.JsonReaderForBooksRead;
 import persistence.JsonWriterForBooksRead;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -58,7 +59,7 @@ public class JsonWriterTestForBooksRead {
 
             JsonReaderForBooksRead reader = new JsonReaderForBooksRead("./data/testWriterGeneralWorkroom.json");
             brl = reader.read();
-            List<Book> books = brl.getAllReadBooks();
+            ArrayList<Book> books = brl.getAllReadBooks();
             assertEquals(2, books.size());
 
         } catch (IOException e) {

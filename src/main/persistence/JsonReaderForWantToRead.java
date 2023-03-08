@@ -42,7 +42,6 @@ public class JsonReaderForWantToRead {
 
     // EFFECTS: parses booksReadList from JSON object and returns it
     private WantToReadList parseWantToReadList(JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
         WantToReadList wtr = new WantToReadList();
         addBooks(wtr, jsonObject);
         return wtr;
@@ -51,7 +50,7 @@ public class JsonReaderForWantToRead {
     // MODIFIES: wtr
     // EFFECTS: parses books from JSON object and adds them to workroom
     private void addBooks(WantToReadList wtr, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("books");
+        JSONArray jsonArray = jsonObject.getJSONArray("nextbooks");
         for (Object json : jsonArray) {
             JSONObject nextBook = (JSONObject) json;
             addBook(wtr, nextBook);

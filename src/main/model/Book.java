@@ -44,7 +44,7 @@ public class Book implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("book", bookTitle);
+        json.put("title", bookTitle);
         json.put("review", review);
         json.put("rating", rating);
         return json;
