@@ -1,21 +1,20 @@
 package persistence;
 
 import model.BooksReadList;
-import model.WantToReadList;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-// Represents a writer that writes JSON representation of WantToRead book list to fill
+// Represents a writer that writes JSON representation of BooksRead book list to fill
 // CODE SOURCE: Json Serialization Demo
-public class JsonWriterForWantToReadList {
+public class JsonWriterForBooksRead {
     private static final int TAB = 4;
     private PrintWriter writer;
     private String destination;
 
-    public JsonWriterForWantToReadList(String destination) {
+    public JsonWriterForBooksRead(String destination) {
         this.destination = destination;
     }
 
@@ -28,8 +27,8 @@ public class JsonWriterForWantToReadList {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of workroom to file
-    public void write(WantToReadList wrt) {
-        JSONObject json = wrt.toJson();
+    public void write(BooksReadList brl) {
+        JSONObject json = brl.toJson();
         saveToFile(json.toString(TAB));
     }
 
@@ -44,4 +43,5 @@ public class JsonWriterForWantToReadList {
     private void saveToFile(String json) {
         writer.print(json);
     }
+
 }

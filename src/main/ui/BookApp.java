@@ -5,10 +5,10 @@ import model.Book;
 import model.BooksReadList;
 import model.NextBook;
 import model.WantToReadList;
-import persistence.JsonReaderForBooksReadList;
-import persistence.JsonReaderForWantToReadList;
-import persistence.JsonWriterForBooksReadList;
-import persistence.JsonWriterForWantToReadList;
+import persistence.JsonReaderForBooksRead;
+import persistence.JsonReaderForWantToRead;
+import persistence.JsonWriterForBooksRead;
+import persistence.JsonWriterForWantToRead;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,18 +22,18 @@ public class BookApp {
     private BooksReadList finishedBooks;
     private WantToReadList nextBooks;
     private static final String JSON_STORE = "./data/workroom.json";
-    private JsonWriterForBooksReadList jsonWriterForBooksRead;
-    private JsonReaderForBooksReadList jsonReaderForBooksRead;
-    private JsonWriterForWantToReadList jsonWriterForWantToRead;
-    private JsonReaderForWantToReadList jsonReaderForWantToRead;
+    private JsonWriterForBooksRead jsonWriterForBooksRead;
+    private JsonReaderForBooksRead jsonReaderForBooksRead;
+    private JsonWriterForWantToRead jsonWriterForWantToRead;
+    private JsonReaderForWantToRead jsonReaderForWantToRead;
 
     // EFFECTS: runs the bookshelf app
     // CODE SOURCE: Json Serialization Demo
     public BookApp() throws FileNotFoundException {
-        jsonWriterForBooksRead = new JsonWriterForBooksReadList(JSON_STORE);
-        jsonReaderForBooksRead = new JsonReaderForBooksReadList(JSON_STORE);
-        jsonWriterForWantToRead = new JsonWriterForWantToReadList(JSON_STORE);
-        jsonReaderForWantToRead = new JsonReaderForWantToReadList(JSON_STORE);
+        jsonWriterForBooksRead = new JsonWriterForBooksRead(JSON_STORE);
+        jsonReaderForBooksRead = new JsonReaderForBooksRead(JSON_STORE);
+        jsonWriterForWantToRead = new JsonWriterForWantToRead(JSON_STORE);
+        jsonReaderForWantToRead = new JsonReaderForWantToRead(JSON_STORE);
         runBookApp();
     }
 

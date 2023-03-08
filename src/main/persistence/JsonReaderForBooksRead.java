@@ -13,11 +13,11 @@ import java.util.stream.Stream;
 
 // Represents a reader that reads BooksRead list from JSON data stored in file
 // CODE SOURCE: Json Serialization Demo
-public class JsonReaderForBooksReadList {
+public class JsonReaderForBooksRead {
     private String source;
 
     // EFFECTS: constructs reader to read from source file
-    public JsonReaderForBooksReadList(String source) {
+    public JsonReaderForBooksRead(String source) {
         this.source = source;
     }
 
@@ -42,7 +42,6 @@ public class JsonReaderForBooksReadList {
 
     // EFFECTS: parses booksReadList from JSON object and returns it
     private BooksReadList parseBooksReadList(JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
         BooksReadList brl = new BooksReadList();
         addBooks(brl, jsonObject);
         return brl;
@@ -59,7 +58,7 @@ public class JsonReaderForBooksReadList {
     }
 
     // MODIFIES: brl
-    // EFFECTS: parses book from JSON object and adds it to workroom
+    // EFFECTS: parses book from JSON object and adds it to book list
     private void addBook(BooksReadList brl, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         String review = jsonObject.getString("review");
@@ -67,5 +66,4 @@ public class JsonReaderForBooksReadList {
         Book book = new Book(title, review, rating);
         brl.addBookAlreadyRead(book);
     }
-
 }

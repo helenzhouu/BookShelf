@@ -13,11 +13,11 @@ import java.util.stream.Stream;
 
 // Represents a reader that reads WantToReadBook list from JSON data stored in file
 // CODE SOURCE: Json Serialization Demo
-public class JsonReaderForWantToReadList {
+public class JsonReaderForWantToRead {
     private String source;
 
     // EFFECTS: constructs reader to read from source file
-    public JsonReaderForWantToReadList(String source) {
+    public JsonReaderForWantToRead(String source) {
         this.source = source;
     }
 
