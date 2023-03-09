@@ -33,14 +33,14 @@ public class Book implements Writable {
     }
 
     // EFFECTS: returns a string representation of book
-    // CODE SOURCE: Teller App
+    // CODE SOURCE: Teller App (https://github.students.cs.ubc.ca/CPSC210/TellerApp.git)
     @Override
     public String toString() {
         return "Book Title = " + bookTitle + ", Review = " + review + ", " + "Rating = " + rating + "";
     }
 
     // EFFECTS: maps name to object
-    // CODE SOURCE: JSON SERILIZATION DEMO
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

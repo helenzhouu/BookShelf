@@ -2,7 +2,6 @@ package persistance;
 
 import model.Book;
 import model.BooksReadList;
-import model.WantToReadList;
 import org.junit.jupiter.api.Test;
 import persistence.JsonReaderForBooksRead;
 import persistence.JsonWriterForBooksRead;
@@ -14,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-// CODE SOURCE: Json Serialization Demo
+// CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
 public class JsonWriterTestForBooksRead {
 
     @Test
@@ -33,12 +32,12 @@ public class JsonWriterTestForBooksRead {
     void testWriterEmptyBooksRead() {
         try {
             BooksReadList brl = new BooksReadList();
-            JsonWriterForBooksRead wtr = new JsonWriterForBooksRead("./data/testWriterEmptyWorkroom.json");
+            JsonWriterForBooksRead wtr = new JsonWriterForBooksRead("./data/testWriterEmptyBookList.json");
             wtr.open();
             wtr.write(brl);
             wtr.close();
 
-            JsonReaderForBooksRead reader = new JsonReaderForBooksRead("./data/testWriterEmptyWorkroom.json");
+            JsonReaderForBooksRead reader = new JsonReaderForBooksRead("./data/testWriterEmptyBookList.json");
             brl = reader.read();
             assertEquals(0, brl.booksReadLength());
         } catch (IOException e) {
@@ -52,12 +51,12 @@ public class JsonWriterTestForBooksRead {
             BooksReadList brl = new BooksReadList();
             brl.addBookAlreadyRead(new Book("Harry Potter", "good", 7));
             brl.addBookAlreadyRead(new Book("Hunger Games", "good", 8));
-            JsonWriterForBooksRead wtr = new JsonWriterForBooksRead("./data/testWriterGeneralWorkroom.json");
+            JsonWriterForBooksRead wtr = new JsonWriterForBooksRead("./data/testWriterGeneralBookList.json");
             wtr.open();
             wtr.write(brl);
             wtr.close();
 
-            JsonReaderForBooksRead reader = new JsonReaderForBooksRead("./data/testWriterGeneralWorkroom.json");
+            JsonReaderForBooksRead reader = new JsonReaderForBooksRead("./data/testWriterGeneralBookList.json");
             brl = reader.read();
             ArrayList<Book> books = brl.getAllReadBooks();
             assertEquals(2, books.size());

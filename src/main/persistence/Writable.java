@@ -2,7 +2,7 @@ package persistence;
 
 import org.json.JSONObject;
 
-// CODE SOURCE: Json Serialization Demo
+// CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
 public interface Writable {
     // EFFECTS: returns this as JSON object
     JSONObject toJson();

@@ -58,8 +58,8 @@ public class BooksReadList implements Writable {
         return booksRead;
     }
 
-    // EFFECTS:
-    // CODE SOURCE: Json Serialization Demo
+    // EFFECTS: converts to json
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -68,7 +68,7 @@ public class BooksReadList implements Writable {
     }
 
     // EFFECTS: returns books in this BooksReadList as a JSON array
-    // CODE SOURCE: Json Serialization Demo
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private JSONArray booksToJson() {
         JSONArray jsonArray = new JSONArray();
 

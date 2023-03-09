@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 // Represents a reader that reads WantToReadBook list from JSON data stored in file
-// CODE SOURCE: Json Serialization Demo
+// CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
 public class JsonReaderForWantToRead {
     private String source;
 

@@ -11,8 +11,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-// CODE SOURCE: Json Serialization Demo
-public class JsonReaderTestForWantToRead{
+// CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
+public class JsonReaderTestForWantToRead {
 
     @Test
     void testReaderNonExistentFile() {

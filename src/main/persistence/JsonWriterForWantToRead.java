@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 // Represents a writer that writes JSON representation of WantToRead book list to fill
-// CODE SOURCE: Json Serialization Demo
+// CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
 public class JsonWriterForWantToRead {
     private static final int TAB = 4;
     private PrintWriter writer;

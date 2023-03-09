@@ -28,7 +28,7 @@ public class BookApp {
     private JsonReaderForWantToRead jsonReaderForWantToRead;
 
     // EFFECTS: runs the bookshelf app
-    // CODE SOURCE: Json Serialization Demo
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     public BookApp() throws FileNotFoundException {
         jsonWriterForBooksRead = new JsonWriterForBooksRead(JSON_STORE);
         jsonReaderForBooksRead = new JsonReaderForBooksRead(JSON_STORE);
@@ -39,7 +39,7 @@ public class BookApp {
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    // CODE SOURCE: Teller App
+    // CODE SOURCE: Teller App (https://github.students.cs.ubc.ca/CPSC210/TellerApp.git)
     private void runBookApp() {
         boolean keepGoing = true;
         String command = null;
@@ -64,7 +64,7 @@ public class BookApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    // CODE SOURCE: TellerApp
+    // CODE SOURCE: TellerApp (https://github.students.cs.ubc.ca/CPSC210/TellerApp.git)
     private void processCommand(String command) {
         if (command.equals("1")) {
             doAddBookToRead();
@@ -89,7 +89,7 @@ public class BookApp {
 
     // MODIFIES: this
     // EFFECTS: initializes book lists
-    // CODE SOURCE: Teller App
+    // CODE SOURCE: Teller App (https://github.students.cs.ubc.ca/CPSC210/TellerApp.git)
     private void start() {
         finishedBooks = new BooksReadList();
         nextBooks = new WantToReadList();
@@ -201,7 +201,7 @@ public class BookApp {
     }
 
     // EFFECTS: saves the BooksReadList to file
-    // CODE SOURCE: Json Serialization Demo
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void saveBooksReadList() {
         try {
             jsonWriterForBooksRead.open();
@@ -215,6 +215,7 @@ public class BookApp {
 
     // MODIFIES: this
     // EFFECTS: loads BooksReadList from file
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void loadBooksReadList() {
         try {
             finishedBooks = jsonReaderForBooksRead.read();
@@ -225,7 +226,7 @@ public class BookApp {
     }
 
     // EFFECTS: saves the WantToReadList to file
-    // CODE SOURCE: Json Serialization Demo
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void saveWantToReadList() {
         try {
             jsonWriterForWantToRead.open();
@@ -239,6 +240,7 @@ public class BookApp {
 
     // MODIFIES: this
     // EFFECTS: loads WantToReadList from file
+    // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     private void loadWantToReadList() {
         try {
             nextBooks = jsonReaderForWantToRead.read();
