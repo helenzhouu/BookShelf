@@ -9,13 +9,12 @@ import persistence.JsonWriterForWantToRead;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
-public class JsonWriterTestForWantToRead {
+public class JsonWriterForWantToReadTest {
     NextBook book1 = new NextBook("Lord of the Rings", "fantasy");
     NextBook book2 = new NextBook("The Giver", "dystopian");
 

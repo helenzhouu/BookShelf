@@ -8,13 +8,12 @@ import persistence.JsonWriterForBooksRead;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 // CODE SOURCE: Json Serialization Demo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
-public class JsonWriterTestForBooksRead {
+public class JsonWriterForBooksReadTest {
 
     @Test
     void testWriterInvalidFile() {
