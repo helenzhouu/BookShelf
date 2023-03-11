@@ -21,7 +21,8 @@ public class BookApp {
     private NextBook bookToRead;
     private BooksReadList finishedBooks;
     private WantToReadList nextBooks;
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/booksread.json";
+    private static final String JSON_STORE2 = "./data/nextbooks.json";
     private JsonWriterForBooksRead jsonWriterForBooksRead;
     private JsonReaderForBooksRead jsonReaderForBooksRead;
     private JsonWriterForWantToRead jsonWriterForWantToRead;
@@ -32,8 +33,8 @@ public class BookApp {
     public BookApp() throws FileNotFoundException {
         jsonWriterForBooksRead = new JsonWriterForBooksRead(JSON_STORE);
         jsonReaderForBooksRead = new JsonReaderForBooksRead(JSON_STORE);
-        jsonWriterForWantToRead = new JsonWriterForWantToRead(JSON_STORE);
-        jsonReaderForWantToRead = new JsonReaderForWantToRead(JSON_STORE);
+        jsonWriterForWantToRead = new JsonWriterForWantToRead(JSON_STORE2);
+        jsonReaderForWantToRead = new JsonReaderForWantToRead(JSON_STORE2);
         runBookApp();
     }
 
@@ -75,13 +76,17 @@ public class BookApp {
         } else if (command.equals("4")) {
             removeBookFromNextBooks();
         } else if (command.equals("5")) {
-            viewOneReadBook();
-        } else if (command.equals("6")) {
-            viewOneWantToReadBook();
-        } else if (command.equals("7")) {
             viewAllReadBooks();
-        } else if (command.equals("8")) {
+        } else if (command.equals("6")) {
             viewAllWantToReadBooks();
+        } else if (command.equals("7")) {
+            saveBooksReadList();
+        } else if (command.equals("8")) {
+            loadBooksReadList();
+        } else if (command.equals("9")) {
+            saveWantToReadList();
+        } else if (command.equals("10")) {
+            loadWantToReadList();
         } else {
             System.out.println("Selection not valid... please try again");
         }
@@ -104,10 +109,12 @@ public class BookApp {
         System.out.println("2 -> Add a book to my want to read bookshelf");
         System.out.println("3 -> Remove a book to my read bookshelf");
         System.out.println("4 -> Remove a book to my want to read bookshelf");
-        System.out.println("5 -> View one specific book from my read bookshelf");
-        System.out.println("6 -> View one specific book from my want to read bookshelf");
-        System.out.println("7 -> View my entire read bookshelf");
-        System.out.println("8 -> View my entire want to read bookshelf");
+        System.out.println("5 -> View my entire read bookshelf");
+        System.out.println("6 -> View my entire want to read bookshelf");
+        System.out.println("7 -> Save books read list to file");
+        System.out.println("8 -> Load books read list from file");
+        System.out.println("9 -> Save want to read list to file");
+        System.out.println("10 -> Load want to read list from file");
         System.out.println("q -> Quit");
     }
 
@@ -232,9 +239,9 @@ public class BookApp {
             jsonWriterForWantToRead.open();
             jsonWriterForWantToRead.write(nextBooks);
             jsonWriterForWantToRead.close();
-            System.out.println("Saved your want to read books list to " + JSON_STORE);
+            System.out.println("Saved your want to read books list to " + JSON_STORE2);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            System.out.println("Unable to write to file: " + JSON_STORE2);
         }
     }
 
@@ -244,9 +251,9 @@ public class BookApp {
     private void loadWantToReadList() {
         try {
             nextBooks = jsonReaderForWantToRead.read();
-            System.out.println("Loaded your want to read books read list from " + JSON_STORE);
+            System.out.println("Loaded your want to read books read list from " + JSON_STORE2);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            System.out.println("Unable to read from file: " + JSON_STORE2);
         }
     }
 }
