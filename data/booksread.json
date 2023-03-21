@@ -1,5 +1,12 @@
-{"booksread": [{
-    "review": "great",
-    "rating": 9,
-    "title": "hunger games"
-}]}
+{"booksread": [
+    {
+        "review": "good",
+        "rating": 7,
+        "title": "harry potter"
+    },
+    {
+        "review": "great",
+        "rating": 8,
+        "title": "hunger games"
+    }
+]}
