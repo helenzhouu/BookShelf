@@ -1,11 +1,8 @@
 package ui;
 
-import model.Book;
-import model.BooksReadList;
+import model.NextBook;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,6 +21,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
     private DefaultTableModel table;
     private JButton addButton;
     private JButton removeButton;
+    private NextBook nextBook;
 
     // EFFECTS: constructs a bookshelf UI
     public BookShelfUI() {
@@ -32,7 +30,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
         bookFrame.setSize(700, 700);
         bookFrame.setLayout(new BorderLayout());
         String[] columnNames = {"Book Title", "Description"};
-        String[][] data = {{"Harry Potter", "Fantasy"}};
+        Object[][] data = {{"Harry Potter", "Fantasy"}};
         table = new DefaultTableModel(data, columnNames);
         books = new JTable();
         books.setModel(table);
@@ -64,6 +62,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
         return bookPanel;
     }
 
+    // EFFECTS: creates a save and load option menu bar
     private Component bookMenu() {
         JMenuBar bm = new JMenuBar();
         JMenu file = new JMenu("File");
@@ -76,36 +75,35 @@ public class BookShelfUI extends JFrame implements ActionListener {
         return bm;
     }
 
-    @SuppressWarnings({"method length", "checkstyle:SuppressWarnings", "checkstyle:MethodLength"})
     // EFFECTS: constructs a button panel
     private Component buttonPanel() {
         JPanel buttonPanel = new JPanel();
 
         addButton = new JButton("Add Book");
         addButton.setActionCommand("add");
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[][] data = {{bookTitle.getText()},
-                        {bookDesc.getText()}};
-                table.addRow(data);
-                JOptionPane.showMessageDialog(bookFrame, "Book Successfully Added");
-            }
-        });
+        addButton.addActionListener(this);
 
         removeButton = new JButton("Remove All Books");
         removeButton.setActionCommand("remove");
-        addButton.addActionListener(this);
+        removeButton.addActionListener(this);
 
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
         return buttonPanel;
     }
 
+    // EFFECTS:
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ("remove".equals(e.getActionCommand())) {
-            table.setRowCount(0);
+        if ("add".equals(e.getActionCommand())) {
+            String title = bookTitle.getText();
+            String desc = bookDesc.getText();
+            Object[][] data = {{title, desc}};
+            table.addRow(data);
+            JOptionPane.showMessageDialog(bookFrame, "Book Successfully Added");
+        } else if ("remove".equals(e.getActionCommand())) {
+            DefaultTableModel model = (DefaultTableModel) books.getModel();
+            model.setRowCount(0);
         }
     }
 }
