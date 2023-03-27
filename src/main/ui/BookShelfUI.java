@@ -4,54 +4,63 @@ import model.Book;
 import model.BooksReadList;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // represents BookApp's main frame
 public class BookShelfUI extends JFrame implements ActionListener {
-    private DefaultListModel bookListModel;
-    private JList bookListing;
+    private JFrame bookFrame;
     private JPanel bookPanel;
     private JPanel buttonPanel;
+    private JTextField bookTitle;
+    private JTextField bookDesc;
+    private String[] columnNames;
+    private String[] data;
+    private JTable books;
+    private DefaultTableModel table;
+    private JButton addButton;
+    private JButton removeButton;
 
     // EFFECTS: constructs a bookshelf UI
     public BookShelfUI() {
-        JFrame bookFrame = new JFrame("My List Of Books I Want to Read");
+        JFrame bookFrame = new JFrame("My List of Books I Want to Read");
         bookFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         bookFrame.setSize(700, 700);
         bookFrame.setLayout(new BorderLayout());
+        String[] columnNames = {"Book Title", "Description"};
+        String[][] data = {{"Harry Potter", "Fantasy"}};
+        table = new DefaultTableModel(data, columnNames);
+        books = new JTable();
+        books.setModel(table);
+
+        JScrollPane scrollPane = new JScrollPane(books);
 
         bookFrame.add(bookMenu(), BorderLayout.NORTH);
-        bookFrame.add(bookList(), BorderLayout.CENTER);
         bookFrame.add(bookPanel(), BorderLayout.SOUTH);
         bookFrame.add(buttonPanel(), BorderLayout.WEST);
+        bookFrame.add(scrollPane);
 
         bookFrame.pack();
         bookFrame.setVisible(true);
     }
 
-    // EFFECTS: constructs a book list
-    private Component bookList() {
-        bookListModel = new DefaultListModel<>();
-
-        bookListing = new JList<>(bookListModel);
-        JScrollPane bookScroll = new JScrollPane(bookListing);
-        return bookListing;
-    }
 
     // EFFECTS: constructs a book panel
     private Component bookPanel() {
         bookPanel = new JPanel();
         JLabel bookLabel = new JLabel("Enter Book Title");
-        JTextField bookTitle = new JTextField(20);
+        bookTitle = new JTextField(20);
         JLabel bookLabel2 = new JLabel("Enter Brief Overview");
-        JTextField bookReview = new JTextField(50);
+        bookDesc = new JTextField(50);
 
         bookPanel.add(bookLabel);
         bookPanel.add(bookTitle);
         bookPanel.add(bookLabel2);
-        bookPanel.add(bookReview);
+        bookPanel.add(bookDesc);
         return bookPanel;
     }
 
@@ -67,15 +76,26 @@ public class BookShelfUI extends JFrame implements ActionListener {
         return bm;
     }
 
+    @SuppressWarnings({"method length", "checkstyle:SuppressWarnings", "checkstyle:MethodLength"})
     // EFFECTS: constructs a button panel
     private Component buttonPanel() {
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 3));
 
-        Button addButton = new Button("Add Book");
-        addButton.setActionCommand("Add");
-        Button removeButton = new Button("Remove Book");
-        removeButton.setActionCommand("Remove");
+        addButton = new JButton("Add Book");
+        addButton.setActionCommand("add");
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[][] data = {{bookTitle.getText()},
+                        {bookDesc.getText()}};
+                table.addRow(data);
+                JOptionPane.showMessageDialog(bookFrame, "Book Successfully Added");
+            }
+        });
+
+        removeButton = new JButton("Remove All Books");
+        removeButton.setActionCommand("remove");
+        addButton.addActionListener(this);
 
         buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
@@ -84,7 +104,8 @@ public class BookShelfUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if ("remove".equals(e.getActionCommand())) {
+            table.setRowCount(0);
+        }
     }
-
 }
