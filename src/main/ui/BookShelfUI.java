@@ -103,7 +103,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
         if ("add".equals(e.getActionCommand())) {
             String title = bookTitle.getText();
             String desc = bookDesc.getText();
-            Object[][] data = {{title, desc}};
+            Object[] data = {title, desc};
             table.addRow(data);
             ImageIcon bookshelf = new ImageIcon("books.jpg");
             JOptionPane.showMessageDialog(bookFrame,
