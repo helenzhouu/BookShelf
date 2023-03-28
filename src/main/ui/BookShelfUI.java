@@ -15,13 +15,12 @@ public class BookShelfUI extends JFrame implements ActionListener {
     private JPanel buttonPanel;
     private JTextField bookTitle;
     private JTextField bookDesc;
-    private String[] columnNames;
-    private String[] data;
     private JTable books;
     private DefaultTableModel table;
+    private JMenuItem save;
+    private JMenuItem load;
     private JButton addButton;
     private JButton removeButton;
-    private NextBook nextBook;
 
     // EFFECTS: constructs a bookshelf UI
     public BookShelfUI() {
@@ -30,7 +29,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
         bookFrame.setSize(700, 700);
         bookFrame.setLayout(new BorderLayout());
         String[] columnNames = {"Book Title", "Description"};
-        Object[][] data = {{"Harry Potter", "Fantasy"}};
+        Object[][] data = {{"Harry Potter", "Fantasy book about wizards and witches"}};
         table = new DefaultTableModel(data, columnNames);
         books = new JTable();
         books.setModel(table);
@@ -45,7 +44,6 @@ public class BookShelfUI extends JFrame implements ActionListener {
         bookFrame.pack();
         bookFrame.setVisible(true);
     }
-
 
     // EFFECTS: constructs a book panel
     private Component bookPanel() {
@@ -66,8 +64,14 @@ public class BookShelfUI extends JFrame implements ActionListener {
     private Component bookMenu() {
         JMenuBar bm = new JMenuBar();
         JMenu file = new JMenu("File");
-        JMenuItem save = new JMenuItem("Save Books");
-        JMenuItem load = new JMenuItem("Load Books");
+
+        save = new JMenuItem("Save Books");
+        save.setActionCommand("save");
+        save.addActionListener(this);
+
+        load = new JMenuItem("Load Books");
+        load.setActionCommand("load");
+        load.addActionListener(this);
 
         bm.add(file);
         file.add(save);
@@ -93,6 +97,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
     }
 
     // EFFECTS:
+    // IMAGE CITATION:
     @Override
     public void actionPerformed(ActionEvent e) {
         if ("add".equals(e.getActionCommand())) {
@@ -100,10 +105,17 @@ public class BookShelfUI extends JFrame implements ActionListener {
             String desc = bookDesc.getText();
             Object[][] data = {{title, desc}};
             table.addRow(data);
-            JOptionPane.showMessageDialog(bookFrame, "Book Successfully Added");
+            ImageIcon bookshelf = new ImageIcon("books.jpg");
+            JOptionPane.showMessageDialog(bookFrame,
+                    "Book Successfully Added",
+                    "Bookshelf", JOptionPane.INFORMATION_MESSAGE, bookshelf);
         } else if ("remove".equals(e.getActionCommand())) {
             DefaultTableModel model = (DefaultTableModel) books.getModel();
             model.setRowCount(0);
+        } else if ("save".equals(e.getActionCommand())) {
+            // stub
+        } else if ("load".equals(e.getActionCommand())) {
+            //stub
         }
     }
 }
