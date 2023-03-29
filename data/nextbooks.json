@@ -1,10 +1,4 @@
-{"nextbooks": [
-    {
-        "description": "fantasy",
-        "title": "lord of the rings"
-    },
-    {
-        "description": "fantasy again",
-        "title": "lord of the rings 2"
-    }
-]}
+{"nextbooks": [{
+    "description": "book23",
+    "title": "1book3"
+}]}
