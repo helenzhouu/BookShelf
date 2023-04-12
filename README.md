@@ -35,3 +35,12 @@ Added book: harry potter
 
 Tue Apr 11 17:28:50 PDT 2023
 Added book: hunger games
+
+# Phase 4: Task 3
+If I had more time to work on the project, I would incorporate more abstract classes into my model as I notice that
+the Book and NextBook class have very similar methods. Additionally, I would also convert the BooksReadList and
+WantToReadList classes into abstract classes as well to prevent code duplication. Moreover, in the BookApp, instead of
+having 10 initial bookshelf options for the user, I would reduce it down to a
+few core options that would expand into other options. For example, instead of having
+option 1 and 2 of adding to different book shelfs, I would have one option of "add a book" and then it would expand
+to other options of either adding to a books read shelf and a want to read shelf.
