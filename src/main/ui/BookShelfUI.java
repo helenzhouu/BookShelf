@@ -1,5 +1,6 @@
 package ui;
 
+import model.EventLog;
 import model.NextBook;
 import model.WantToReadList;
 import persistence.JsonReaderForWantToRead;
@@ -8,8 +9,7 @@ import persistence.JsonWriterForWantToRead;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -37,9 +37,10 @@ public class BookShelfUI extends JFrame implements ActionListener {
         bookFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         bookFrame.setSize(700, 700);
         bookFrame.setLayout(new BorderLayout());
+        bookFrame.addWindowListener(windowClose);
 
         String[] columnNames = {"Book Title", "Description"};
-        Object[][] data = {{}};
+        Object[][] data = {{""}};
         table = new DefaultTableModel(data, columnNames);
         books = new JTable();
         books.setModel(table);
@@ -50,6 +51,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
         bookFrame.add(bookPanel(), BorderLayout.SOUTH);
         bookFrame.add(buttonPanel(), BorderLayout.WEST);
         bookFrame.add(scrollPane);
+
 
         bookFrame.pack();
         bookFrame.setVisible(true);
@@ -120,7 +122,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
         wtr.addBookToRead(nextBook);
     }
 
-    // EFFECTS: connects action function to buttons
+    // EFFECTS: connects action function to all the buttons
     // IMAGE CITATION: https://pixabay.com/photos/a-book-books-bookshelf-read-67049/
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -175,4 +177,15 @@ public class BookShelfUI extends JFrame implements ActionListener {
             System.out.println("Unable to read from file: " + JSON_STORE3);
         }
     }
+
+    private WindowAdapter windowClose = new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            for (model.Event next : model.EventLog.getInstance()) {
+                System.out.println(next);
+            }
+            System.exit(0);
+        }
+    };
 }
+

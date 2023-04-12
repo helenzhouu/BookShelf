@@ -1,14 +1,10 @@
 {"nextbooks": [
     {
-        "description": "fantasy",
+        "description": "fantasy about wizards",
         "title": "harry potter"
     },
     {
-        "description": "fantasy 2",
-        "title": "harry potter 2"
-    },
-    {
-        "description": "fantasy 3",
-        "title": "harry potter 3"
+        "description": "adventure and fantasy",
+        "title": "lord of the rings"
     }
 ]}

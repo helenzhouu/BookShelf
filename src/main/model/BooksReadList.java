@@ -19,6 +19,7 @@ public class BooksReadList implements Writable {
     // EFFECTS: adds a book to a list of books that have been read
     public void addBookAlreadyRead(Book book) {
         booksRead.add(book);
+        EventLog.getInstance().logEvent(new Event("Added book: " + book.getBookTitle()));
     }
 
     // REQUIRES: non-empty list of books
@@ -30,6 +31,7 @@ public class BooksReadList implements Writable {
         for (Book bk : booksRead) {
             if (title.equals(bk.getBookTitle())) {
                 booksRead.remove(bk);
+                EventLog.getInstance().logEvent(new Event("Removed book: " + bk.getBookTitle()));
                 return true;
             }
         }
@@ -42,6 +44,7 @@ public class BooksReadList implements Writable {
     public Book getBook(String title) {
         for (Book bk : booksRead) {
             if (title.equals(bk.getBookTitle())) {
+                EventLog.getInstance().logEvent(new Event("Found book: " + bk.getBookTitle()));
                 return bk;
             }
         }
@@ -50,11 +53,13 @@ public class BooksReadList implements Writable {
 
     // EFFECTS: returns the amount of books in the list
     public int booksReadLength() {
+        EventLog.getInstance().logEvent(new Event("Returned bookshelf size: " + booksRead.size()));
         return booksRead.size();
     }
 
     // EFFECTS: returns all the books in the list
     public ArrayList<Book> getAllReadBooks() {
+        EventLog.getInstance().logEvent(new Event("Returned all books in books read list"));
         return booksRead;
     }
 

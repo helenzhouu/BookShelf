@@ -28,3 +28,10 @@ in the text fields, then pressing the add button
 - You can generate the second required action related to removing Xs from a Y by pressing the remove all button
 - You can locate my visual component by adding a book and pressing the add button
 - You can save the state of my application by pressing the file option on the top menu bar
+
+# Phase 4: Task 2
+Tue Apr 11 17:28:38 PDT 2023
+Added book: harry potter
+
+Tue Apr 11 17:28:50 PDT 2023
+Added book: hunger games
