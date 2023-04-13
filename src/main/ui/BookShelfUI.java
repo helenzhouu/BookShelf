@@ -1,5 +1,6 @@
 package ui;
 
+import model.Event;
 import model.EventLog;
 import model.NextBook;
 import model.WantToReadList;
@@ -32,6 +33,7 @@ public class BookShelfUI extends JFrame implements ActionListener {
     private static final String JSON_STORE3 = "./data/guiNextBooks.json";
 
     // EFFECTS: constructs a bookshelf UI
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public BookShelfUI() throws FileNotFoundException {
         JFrame bookFrame = new JFrame("My List of Books I Want to Read");
         bookFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,6 +63,16 @@ public class BookShelfUI extends JFrame implements ActionListener {
         jsonReader = new JsonReaderForWantToRead(JSON_STORE3);
     }
 
+    // EFFECTS: logs key events
+    private WindowAdapter windowClose = new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            for (Event next : EventLog.getInstance()) {
+                System.out.println(next);
+            }
+            System.exit(0);
+        }
+    };
 
     // EFFECTS: constructs a book panel
     private Component bookPanel() {
@@ -177,15 +189,5 @@ public class BookShelfUI extends JFrame implements ActionListener {
             System.out.println("Unable to read from file: " + JSON_STORE3);
         }
     }
-
-    private WindowAdapter windowClose = new WindowAdapter() {
-        @Override
-        public void windowClosing(WindowEvent e) {
-            for (model.Event next : model.EventLog.getInstance()) {
-                System.out.println(next);
-            }
-            System.exit(0);
-        }
-    };
 }
 
