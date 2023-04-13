@@ -30,11 +30,11 @@ in the text fields, then pressing the add button
 - You can save the state of my application by pressing the file option on the top menu bar
 
 # Phase 4: Task 2
-Tue Apr 11 17:28:38 PDT 2023
-Added book: harry potter
+Wed Apr 12 20:27:03 PDT 2023
+Added book: harry potter with description: fantasy book about wizards and witches
 
-Tue Apr 11 17:28:50 PDT 2023
-Added book: hunger games
+Wed Apr 12 20:27:14 PDT 2023
+Added book: hunger games with description: dystopian book
 
 # Phase 4: Task 3
 If I had more time to work on the project, I would incorporate more abstract classes into my model as I notice that

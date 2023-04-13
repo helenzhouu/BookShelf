@@ -20,7 +20,8 @@ public class WantToReadList implements Writable {
     // EFFECTS: adds a book to a list of books that user wants to read
     public void addBookToRead(NextBook futurebook) {
         wantToRead.add(futurebook);
-        EventLog.getInstance().logEvent(new Event("Added book: " + futurebook.getNextBookTitle()));
+        EventLog.getInstance().logEvent(new Event("Added book: " + futurebook.getNextBookTitle()
+                + " with description: " + futurebook.getDescription()));
     }
 
     // REQUIRES: non-empty list
@@ -32,7 +33,8 @@ public class WantToReadList implements Writable {
         for (NextBook bk : wantToRead) {
             if (title.equals(bk.getNextBookTitle())) {
                 wantToRead.remove(bk);
-                EventLog.getInstance().logEvent(new Event("Removed book: " + bk.getNextBookTitle()));
+                EventLog.getInstance().logEvent(new Event("Removed book: " + bk.getNextBookTitle()
+                        + " with description: " + bk.getDescription()));
                 return true;
             }
         }
