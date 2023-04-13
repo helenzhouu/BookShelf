@@ -31,9 +31,11 @@ in the text fields, then pressing the add button
 
 # Phase 4: Task 2
 Wed Apr 12 20:27:03 PDT 2023
+
 Added book: harry potter with description: fantasy book about wizards and witches
 
 Wed Apr 12 20:27:14 PDT 2023
+
 Added book: hunger games with description: dystopian book
 
 # Phase 4: Task 3
